@@ -134,7 +134,7 @@ func (shader Shader) GetSource() string {
 	C.glGetShaderiv(C.GLuint(shader), C.GLenum(SHADER_SOURCE_LENGTH), &len)
 
 	log := C.malloc(C.size_t(len + 1))
-	C.glGetShaderSource(C.GLuint(shader), C.GLsizei(len), nil, (*C.GLchar)(log))
+	C.glGetShaderSource(C.GLint(shader), C.GLsizei(len), nil, (*C.GLchar)(log))
 
 	defer C.free(log)
 
